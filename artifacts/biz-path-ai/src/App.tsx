@@ -10,6 +10,9 @@ import Dashboard from "@/pages/Dashboard";
 import Results from "@/pages/Results";
 import BusinessDetail from "@/pages/BusinessDetail";
 import Coach from "@/pages/Coach";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Privacy from "@/pages/Privacy";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ function Router() {
           <Route path="/results" component={Results} />
           <Route path="/business/:id" component={BusinessDetail} />
           <Route path="/coach" component={Coach} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/privacy" component={Privacy} />
           <Route component={NotFound} />
         </Switch>
       </main>
