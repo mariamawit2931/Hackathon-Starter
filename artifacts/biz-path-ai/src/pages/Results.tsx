@@ -35,21 +35,23 @@ const skillGaps = [
   { skill: "Digital Marketing", you: 80, required: 90 },
 ];
 
+// IMPROVED: Added 'permit' and localized 'market' context
 const opportunities = [
-  { title: "Coffee Shop Business", readiness: 92, capital: "ETB 50K – 100K", timeline: "3–6 months", skills: ["Customer Service", "Management", "Sales"], viability: "High", market: "Growing" },
-  { title: "Digital Marketing Agency", readiness: 88, capital: "ETB 15K – 30K", timeline: "2–3 months", skills: ["Marketing", "Coding", "Sales"], viability: "Very High", market: "Booming" },
-  { title: "Content Creation", readiness: 85, capital: "ETB 5K – 15K", timeline: "1–2 months", skills: ["Writing", "Design", "Marketing"], viability: "High", market: "Growing" },
-  { title: "Freelance Coding", readiness: 90, capital: "ETB 2K – 5K", timeline: "Immediate", skills: ["Coding", "Customer Service"], viability: "Very High", market: "Very Hot" },
-  { title: "E-Commerce Store", readiness: 82, capital: "ETB 20K – 50K", timeline: "2–3 months", skills: ["Sales", "Design"], viability: "High", market: "Growing" },
-  { title: "Event Planning", readiness: 78, capital: "ETB 10K – 25K", timeline: "2–3 months", skills: ["Management", "Sales"], viability: "Medium", market: "Growing" },
+  { title: "Coffee Shop & Roastery", readiness: 92, capital: "ETB 45K – 80K", timeline: "3–6 months", skills: ["Management", "Service"], viability: "High", market: "Addis/Hubs", permit: "Health Permit" },
+  { title: "Telegram Marketing Agency", readiness: 88, capital: "ETB 5K – 15K", timeline: "1 month", skills: ["Marketing", "Sales"], viability: "Very High", market: "Booming", permit: "Category C" },
+  { title: "Export Logistics Support", readiness: 85, capital: "ETB 20K – 40K", timeline: "2 months", skills: ["Operations", "Sales"], viability: "High", market: "Growing", permit: "Trade License" },
+  { title: "Freelance Software Dev", readiness: 90, capital: "ETB 2K – 10K", timeline: "Immediate", skills: ["Coding", "English"], viability: "Very High", market: "Very Hot", permit: "Freelance Cert" },
+  { title: "Urban Poultry Tech", readiness: 82, capital: "ETB 30K – 50K", timeline: "3 months", skills: ["Technical", "Sales"], viability: "High", market: "Growing", permit: "Agri-Permit" },
+  { title: "Event Tech Planning", readiness: 78, capital: "ETB 15K – 25K", timeline: "2 months", skills: ["Design", "Sales"], viability: "Medium", market: "Growing", permit: "Standard" },
 ];
 
+// IMPROVED: Localized Ethiopian insights
 const insightChips = [
-  { emoji: "📊", text: "High growth sector" },
-  { emoji: "⚡", text: "Low barrier to entry" },
-  { emoji: "🇪🇹", text: "Ethiopian market advantage" },
-  { emoji: "💡", text: "Skills well-matched" },
-  { emoji: "📈", text: "Strong 6-month trajectory" },
+  { emoji: "🇪🇹", text: "High demand in Addis Ababa & Regional Hubs" },
+  { emoji: "📱", text: "Optimized for Telegram-based sales growth" },
+  { emoji: "⚖️", text: "Simplified Category 'C' Tax compliance" },
+  { emoji: "🏗️", text: "Aligned with Ethiopia's Digital 2025 Strategy" },
+  { emoji: "📈", text: "Inflation-hedged revenue projections" },
 ];
 
 const CIRCUMFERENCE = 2 * Math.PI * 54;
@@ -154,11 +156,11 @@ export default function Results() {
             </p>
           </div>
           <div className="flex gap-2 shrink-0">
-            <Button variant="outline" size="sm" className="gap-1.5 border-border/50" data-testid="button-export">
+            <Button variant="outline" size="sm" className="gap-1.5 border-border/50">
               <Download className="w-4 h-4" />
               Export PDF
             </Button>
-            <Button variant="outline" size="sm" asChild className="gap-1.5 border-border/50" data-testid="button-reassess">
+            <Button variant="outline" size="sm" asChild className="gap-1.5 border-border/50">
               <Link href="/assessment">
                 <RefreshCw className="w-4 h-4" />
                 Reassess
@@ -181,13 +183,11 @@ export default function Results() {
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-8">
-                    {/* Ring */}
                     <div className="flex flex-col items-center gap-3 shrink-0">
                       <FounderRing value={82} />
                       <p className="text-xs text-muted-foreground text-center">Overall Readiness</p>
                     </div>
 
-                    {/* Attributes */}
                     <div className="flex-1 grid grid-cols-2 gap-3">
                       {[
                         { icon: MapPin, label: "Location", value: "🇪🇹 Ethiopia" },
@@ -208,7 +208,6 @@ export default function Results() {
                       })}
                     </div>
 
-                    {/* Strength Badges */}
                     <div className="flex flex-col gap-2 justify-center shrink-0">
                       <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">Founder Strengths</p>
                       {["Analytical Thinker", "Market Aware", "Resource Efficient"].map(s => (
@@ -222,7 +221,7 @@ export default function Results() {
           )}
         </AnimatePresence>
 
-        {/* ── SECTION 2: Business Model ── */}
+        {/* ── SECTION 2: Business Model (DYNAMICALLY LINKED) ── */}
         <AnimatePresence>
           {revealStep >= 1 && (
             <motion.div variants={sectionVariant} initial="hidden" animate="visible">
@@ -239,13 +238,13 @@ export default function Results() {
                     <div className="flex-1 p-4 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20">
                       <div className="flex items-start justify-between mb-3">
                         <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">92% Match</p>
-                          <h3 className="text-2xl font-bold font-['Space_Grotesk']">Freelance Writing</h3>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{opportunities[0].readiness}% Match</p>
+                          <h3 className="text-2xl font-bold font-['Space_Grotesk']">{opportunities[0].title}</h3>
                         </div>
-                        <span className="text-4xl">✍️</span>
+                        <span className="text-4xl">🚀</span>
                       </div>
                       <p className="text-sm text-muted-foreground mb-4">
-                        This opportunity is selected based on your skill alignment, capital accessibility, and current Ethiopian market demand trends. It offers the fastest path to early revenue generation.
+                        This opportunity is optimized for your skill alignment in {opportunities[0].skills[0]} and current market demand in {opportunities[0].market}.
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {insightChips.slice(0, 3).map((chip, i) => (
@@ -259,9 +258,9 @@ export default function Results() {
 
                     <div className="grid grid-cols-2 gap-3 md:w-56">
                       {[
-                        { label: "Startup Cost", value: "ETB 25K", color: "text-primary" },
-                        { label: "Time to Revenue", value: "2–4 weeks", color: "text-foreground" },
-                        { label: "Risk Level", value: "Low", color: "text-emerald-400" },
+                        { label: "Startup Cost", value: opportunities[0].capital, color: "text-primary" },
+                        { label: "Timeline", value: opportunities[0].timeline, color: "text-foreground" },
+                        { label: "License", value: opportunities[0].permit, color: "text-amber-400" },
                         { label: "Viability", value: "Very High", color: "text-emerald-400" },
                       ].map((m, i) => (
                         <div key={i} className="p-3 rounded-lg bg-card border border-border/50 shadow-lg shadow-black/20">
@@ -317,10 +316,6 @@ export default function Results() {
                       </motion.div>
                     ))}
                   </div>
-                  <p className="text-xs text-muted-foreground mt-4 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
-                    All figures inflation-adjusted for April 2026 (15.3% annual rate)
-                  </p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -336,7 +331,6 @@ export default function Results() {
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-primary" />
                     <h2 className="text-lg font-semibold">6-Month Revenue Trajectory</h2>
-                    <span className="w-2 h-2 rounded-full bg-primary ai-pulse ml-1" />
                   </div>
                 </CardHeader>
                 <CardContent className="p-6">
@@ -357,31 +351,17 @@ export default function Results() {
                       />
                     </LineChart>
                   </ResponsiveContainer>
-
-                  <div className="grid grid-cols-3 gap-3 mt-4">
-                    {[
-                      { label: "Month 1", value: "ETB 2,000" },
-                      { label: "Month 3", value: "ETB 5,200" },
-                      { label: "Month 6", value: "ETB 15,800" },
-                    ].map((m, i) => (
-                      <div key={i} className="p-3 rounded-lg bg-card border border-border/50 text-center shadow-lg shadow-black/20">
-                        <p className="text-xs text-muted-foreground mb-1">{m.label}</p>
-                        <p className="text-sm font-bold text-primary">{m.value}</p>
-                      </div>
-                    ))}
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* ── SECTION 5: Risks & Insights ── */}
+        {/* ── SECTION 5: IMPROVED Risks & Insights ── */}
         <AnimatePresence>
           {revealStep >= 4 && (
             <motion.div variants={sectionVariant} initial="hidden" animate="visible">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Skills Gap */}
                 <Card className="glass border-border/50 shadow-lg shadow-black/20">
                   <CardHeader className="p-6 pb-0">
                     <div className="flex items-center gap-2">
@@ -392,24 +372,21 @@ export default function Results() {
                   <CardContent className="p-6">
                     <ResponsiveContainer width="100%" height={180}>
                       <BarChart data={skillGaps} layout="vertical" margin={{ left: 0, right: 10 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
                         <XAxis type="number" domain={[0, 100]} stroke="hsl(var(--muted-foreground))" tick={{ fontSize: 11 }} />
                         <YAxis type="category" dataKey="skill" stroke="hsl(var(--muted-foreground))" tick={{ fontSize: 11 }} width={110} />
-                        <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`${v}%`]} />
-                        <Bar dataKey="you" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} name="Your Level" />
-                        <Bar dataKey="required" fill="hsl(var(--border))" radius={[0, 4, 4, 0]} name="Required" />
+                        <Tooltip contentStyle={tooltipStyle} />
+                        <Bar dataKey="you" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                        <Bar dataKey="required" fill="hsl(var(--border))" radius={[0, 4, 4, 0]} />
                       </BarChart>
                     </ResponsiveContainer>
                   </CardContent>
                 </Card>
 
-                {/* AI Insights */}
                 <Card className="glass border-border/50 shadow-lg shadow-black/20">
                   <CardHeader className="p-6 pb-0">
                     <div className="flex items-center gap-2">
                       <Brain className="w-5 h-5 text-primary" />
                       <h2 className="text-lg font-semibold">AI Insights</h2>
-                      <span className="w-2 h-2 rounded-full bg-primary ai-pulse ml-1" />
                     </div>
                   </CardHeader>
                   <CardContent className="p-6 space-y-3">
@@ -423,18 +400,17 @@ export default function Results() {
                       >
                         <span className="text-lg">{chip.emoji}</span>
                         <p className="text-sm font-medium">{chip.text}</p>
-                        <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary ai-pulse shrink-0" />
                       </motion.div>
                     ))}
                   </CardContent>
                 </Card>
               </div>
 
-              {/* All Opportunities */}
+              {/* IMPROVED: Recommendations with Permits and Skill Badges */}
               <Card className="glass border-border/50 shadow-lg shadow-black/20 mt-6">
                 <CardHeader className="p-6 pb-0">
                   <h2 className="text-lg font-semibold">All 6 Recommended Opportunities</h2>
-                  <p className="text-sm text-muted-foreground">Ranked by readiness score in your region</p>
+                  <p className="text-sm text-muted-foreground">Ranked by readiness and Ethiopian market demand</p>
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -445,26 +421,28 @@ export default function Results() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.08 }}
                         className="p-4 rounded-xl bg-card border border-border/50 shadow-lg shadow-black/20 hover:border-primary/30 transition-all duration-300"
-                        data-testid={`card-opportunity-${i}`}
                       >
                         <div className="flex items-start justify-between mb-3">
                           <h3 className="text-sm font-semibold leading-snug">{opp.title}</h3>
-                          <span className="text-xl font-bold text-primary ml-2 shrink-0">{opp.readiness}%</span>
+                          <div className="text-right">
+                            <span className="text-xl font-bold text-primary ml-2 shrink-0">{opp.readiness}%</span>
+                            <p className="text-[10px] text-emerald-400 font-medium">Skill Match</p>
+                          </div>
                         </div>
 
                         <div className="space-y-1.5 mb-3 pb-3 border-b border-border/50">
                           <div className="flex justify-between text-xs">
-                            <span className="text-muted-foreground">Capital</span>
+                            <span className="text-muted-foreground">Capital Required</span>
                             <span className="font-medium text-primary">{opp.capital}</span>
                           </div>
                           <div className="flex justify-between text-xs">
-                            <span className="text-muted-foreground">Timeline</span>
-                            <span className="font-medium">{opp.timeline}</span>
+                            <span className="text-muted-foreground">Primary Permit</span>
+                            <span className="font-medium text-amber-400">{opp.permit}</span>
                           </div>
                           <div className="flex justify-between text-xs items-center">
-                            <span className="text-muted-foreground">Market</span>
+                            <span className="text-muted-foreground">Market Status</span>
                             <Badge className={`text-xs border ${
-                              opp.market === "Booming" || opp.market === "Very Hot"
+                              opp.market.includes("Booming") || opp.market.includes("Hot")
                                 ? "bg-emerald-500/15 text-emerald-400 border-emerald-500/30"
                                 : "bg-primary/15 text-primary border-primary/30"
                             }`}>{opp.market}</Badge>
@@ -482,7 +460,7 @@ export default function Results() {
                 </CardContent>
               </Card>
 
-              {/* CTA */}
+              {/* Final CTA */}
               <Card className="glass border-primary/20 shadow-lg shadow-black/20 mt-6 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-primary/10" />
                 <CardContent className="p-8 text-center">
@@ -493,13 +471,13 @@ export default function Results() {
                   <div className="flex flex-wrap justify-center gap-3">
                     <Button asChild className="glow-emerald gap-2">
                       <Link href="/coach">
-                        Start Free Coach Session
+                        Start AI Coach Session
                         <ArrowRight className="w-4 h-4" />
                       </Link>
                     </Button>
-                    <Button variant="outline" className="gap-2 border-border/50" data-testid="button-download">
+                    <Button variant="outline" className="gap-2 border-border/50">
                       <Download className="w-4 h-4" />
-                      Download Full Report
+                      Download Business Plan
                     </Button>
                   </div>
                 </CardContent>
