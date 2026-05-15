@@ -42,10 +42,10 @@ const CAPITAL_PRESETS = [
 ];
 
 const AI_STEPS = [
-  "Scanning Ethiopian market data...",
-  "Matching your capital constraints...",
-  "Evaluating skill requirements...",
-  "Computing readiness scores...",
+  "Understanding your entrepreneurial profile...",
+  "Analyzing Ethiopian market demand...",
+  "Matching your skills with real opportunities...",
+  "Estimating profit potential...",
 ];
 
 export default function Assessment() {
@@ -129,8 +129,8 @@ export default function Assessment() {
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold mb-2 font-['Space_Grotesk']">AI is Analyzing Your Profile</h2>
-          <p className="text-muted-foreground text-sm mb-10">Scanning thousands of Ethiopian market opportunities...</p>
+          <h2 className="text-2xl font-bold mb-2 font-['Space_Grotesk']"> We found business opportunities tailored for you</h2>
+          <p className="text-muted-foreground text-sm mb-10">Our AI is analyzing real Ethiopian market data and identifying the most viable business opportunities for your profile...</p>
 
           <div className="space-y-3 text-left">
             {AI_STEPS.map((step, i) => (
@@ -372,8 +372,8 @@ export default function Assessment() {
                 {currentStep === 3 && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-2xl font-bold mb-1 font-['Space_Grotesk']">Review your profile</h2>
-                      <p className="text-muted-foreground text-sm">Everything looks good? Let us scan the market for you.</p>
+                      <h2 className="text-2xl font-bold mb-1 font-['Space_Grotesk']">Your AI business profile is ready</h2>
+                      <p className="text-muted-foreground text-sm"> We are about to generate your personalized business opportunities and roadmap.</p>
                     </div>
 
                     <div className="space-y-3">
@@ -443,7 +443,7 @@ export default function Assessment() {
             className="flex items-center gap-2 glow-emerald"
             data-testid="button-next"
           >
-            {currentStep === 3 ? "Analyse My Profile" : "Next Step"}
+            {currentStep === 3 ? "Generate My Business Opportunities" : "Next Step"}
             <ArrowRight className="w-4 h-4" />
           </Button>
         </div>

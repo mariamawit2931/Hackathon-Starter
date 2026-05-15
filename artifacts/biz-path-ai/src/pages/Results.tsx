@@ -147,9 +147,9 @@ export default function Results() {
               <Zap className="w-3 h-3 mr-1.5 text-primary" />
               Your Personalized Roadmap
             </Badge>
-            <h1 className="text-3xl font-bold font-['Space_Grotesk']">Turn Your Degree Into a Dynasty</h1>
+            <h1 className="text-3xl font-bold font-['Space_Grotesk']">Your Personalized Business Intelligence Report</h1>
             <p className="text-sm text-muted-foreground mt-1">
-              6 high-viability opportunities perfectly matched to your profile.
+              AI has analyzed your skills, capital, and local market conditions to generate these high-viability opportunities.
               <Badge className="ml-2 bg-amber-500/10 text-amber-400 border-amber-500/20 text-xs">📊 April 2026 inflation adjusted</Badge>
             </p>
           </div>
@@ -230,7 +230,7 @@ export default function Results() {
                 <CardHeader className="p-6 pb-0">
                   <div className="flex items-center gap-2">
                     <Target className="w-5 h-5 text-primary" />
-                    <h2 className="text-lg font-semibold">Top Business Match</h2>
+                    <h2 className="text-lg font-semibold">Highest Confidence Business Match</h2>
                     <span className="w-2 h-2 rounded-full bg-primary ai-pulse ml-1" />
                   </div>
                 </CardHeader>
@@ -245,7 +245,7 @@ export default function Results() {
                         <span className="text-4xl">✍️</span>
                       </div>
                       <p className="text-sm text-muted-foreground mb-4">
-                        Your communication skills, low capital requirement, and passion for content make this an exceptional match. The Ethiopian e-commerce boom is creating massive demand for quality writers.
+                        This opportunity is selected based on your skill alignment, capital accessibility, and current Ethiopian market demand trends. It offers the fastest path to early revenue generation.
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {insightChips.slice(0, 3).map((chip, i) => (
