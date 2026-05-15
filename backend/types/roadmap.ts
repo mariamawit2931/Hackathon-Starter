@@ -33,19 +33,23 @@ export interface BizPathOutput {
   localInsights: string;
   risks: string[];
   overallRecommendation: string;
+  timestamp?: string;           // Added for tracking
 }
 
 export interface BizPathUserInput {
-  background: string;   // Educational background or "No formal degree"
-  skills: string;       // Work experience and practical skills
-  capital: string;      // Available capital range in ETB
-  sector?: string;      // Preferred sector (optional)
-  location?: string;    // City/region in Ethiopia (defaults to Addis Ababa)
-  idea?: string;        // Optional business idea
+  capital: string;              // Required: e.g. "500000 ETB" or "5000 USD"
+  background?: string;          // Education or "No formal degree"
+  education?: string;           // Alternative field name
+  skills: string;               // Required
+  sector?: string;
+  idea?: string;
+  location?: string;
+  experience?: string;          // For no-degree users
 }
 
 export interface BizPathAPIResponse {
   success: boolean;
   data?: BizPathOutput;
   error?: string;
+  details?: string;             // For debugging
 }
